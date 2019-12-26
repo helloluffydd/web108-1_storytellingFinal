@@ -1,0 +1,77 @@
+// Import
+@import 'base';
+
+// Global
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Microsoft JhengHei", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;  padding: 0;
+}
+
+section {
+  height: 100vh;
+}
+
+#landing {
+  background-color: gold;
+}
+
+#leading {
+  background-color: cyan;
+}
+
+#bridge {
+  background-color: black;
+}
+
+#analysis {
+  background-color: tomato;
+}
+
+.routes {
+  height: auto;
+  position: relative;
+    
+  #map-han {
+    @include size(50%, 100vh);
+    position: sticky;
+    top: 0;
+  }
+
+  #features-han {
+    width: 50%;
+    margin: 100vh 0 0 50%;
+    background-color: #fafafa;
+  }
+
+  #map-tsai {
+    @include size(50%, 100vh);
+    position: sticky;
+    top: 0;
+    left: 50%;
+  }
+
+  #features-tsai {
+    width: 50%;
+    margin-top: -100vh;
+    background-color: #fafafa;
+  }
+  
+  section {
+    padding: 25px 50px;
+    line-height: 25px;
+    @include flex-center;
+    flex-direction: column;
+  }
+}
+
+
