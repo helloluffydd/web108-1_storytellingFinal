@@ -1,39 +1,91 @@
-
 let whoScrolled = 'Han';
 
 // jQuery
 $(document).ready(function() {
-  let fixedMapHan = $('#map-han').offset().top;
-  let fixedMapTsai = $('#map-tsai').offset().top;
-  let routeTsai = $('#routes-tsai').offset().top;
 
+  let routeHan = $('#routes-han').offset().top;
+  let routeTsai = $('#routes-tsai').offset().top;
+  let bridgeSection = $('#bridge').offset().top;
+  let analysisSection = $('#analysis').offset().top;
+
+  
   $(window).scroll(function() {
     // let windowHeight = $(this).height();
     let scrolledY = $(this).scrollTop();
-    // let scrolledBottom = scrolledY + windowHeight;
+    
+    // Whether the viewport is less than, or equal to, 768 pixels wide
+    let isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    // scrolledY >= fixedMapHan ? $('#map-han').addClass('sticky') : $('#map-han').removeClass('sticky');
-    scrolledY >= fixedMapTsai ? $('#map-tsai').addClass('sticky') : $('#map-tsai').removeClass('sticky');
+    // Switch the whoScrolled to fly the map
+    // scrolledY >= routeTsai ? whoScrolled = 'Tsai' : whoScrolled = 'Han';
+    whoScrolled = (scrolledY >= routeTsai ? 'Tsai' : 'Han');
 
-    scrolledY >= routeTsai ? whoScrolled = 'Tsai' : whoScrolled = 'Han';
+    // scrollZoom forbidden before scrolling to the route sections
+    mapHan.scrollZoom = (scrolledY >= routeHan - 300 && scrolledY <= routeHan + 300 ? false : true);
+    mapTsai.scrollZoom = (scrolledY >= routeTsai - 300 && scrolledY <= routeTsai + 300 ? false : true);
+
+    // add mobile class when scrolling the route sections with mobile device
+    $('#map-han')[scrolledY >= routeHan && isMobile ? 'addClass' : 'removeClass']('fixedBackground');
+    $('#map-tsai')[scrolledY >= bridgeSection && isMobile ? 'addClass' : 'removeClass']('fixedBackground');
   })
 })
 
+d3.json('./JavaScript/2018votes.json').then(data => {
+  const allSvg = d3.selectAll('svg')
+    .attr('width', 350)
+    .attr('height', 50);
+
+  allSvg.each(function() {
+    const svgDataCity = d3.select(this).attr('data-city');    
+    const thisSvg = d3.select(this);
+    const groups = thisSvg.selectAll('g')
+      .data(data[svgDataCity])
+      .enter()
+      .append('g');
+
+    const widthLinear = d3.scaleLinear()
+      .domain([0, 100])
+      .range([0, 300]);
+
+    groups.append('rect')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', d => widthLinear(d.KMT))
+      .attr('height', 15)
+      .attr('fill', '#00358A');
+
+    groups.append('text')
+      .text(d => `國民黨 ${d.KMT} %`)
+      .attr('x', d => widthLinear(d.KMT) + 10)
+      .attr('y', 15)
+      .attr('fill', '#00358A')
+      .style('font-size', '16px')
+
+    groups.append('rect')
+      .attr('x', 0)
+      .attr('y', 30)
+      .attr('width', d => widthLinear(d.DPP))
+      .attr('height', 15)
+      .attr('fill', '#09A34A');
+
+    groups.append('text')
+      .text(d => `民進黨 ${d.DPP ? `${d.DPP} %` : `未提名候選人`} `)
+      .attr('x', d => widthLinear(d.DPP) + 10)
+      .attr('y', 45)
+      .attr('fill', '#09A34A')
+      .style('font-size', '16px')
+  })
+})
 
 // Mapbox Settings
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVmZnljaGVuIiwiYSI6ImNrNGMzcjRqNjBrNTEzc28yYjVpa2ZhNXUifQ.Yy8CvIdVqlHkg6IsjQhOJg';
-
-// center: [longitude, latitude]
-// zoom: The initial zoom level of the map.
-// bearing: The initial bearing (rotation) of the map, measured in degrees counter-clockwise from north.
-// pitch: The initial pitch (tilt) of the map, measured in degrees away from the plane of the screen (0-60).
 
 // Han's routes map
 let mapHan = new mapboxgl.Map({
   container: 'map-han',
   style: 'mapbox://styles/luffychen/ck4l21n2g0oc11cp4zzwrdvnc',
-  center: [121.881, 23.643],
-  zoom: 6,
+  center: [121.264041, 24.96574],
+  zoom: 16,
   bearing: 20,
   pitch: 30,
   minZoom: 6
@@ -42,61 +94,72 @@ let mapHan = new mapboxgl.Map({
 let chaptersHan = {
   'han-route-1': {
     center: [121.264041, 24.96574],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'han-route-2': {
-    center: [121.465785, 25.068627],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.194002, 22.986756],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'han-route-3': {
-    center: [120.194002, 22.986756],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.439026, 23.799939],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'han-route-4': {
-    center: [120.492881, 23.85312],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [121.5453, 25.026424],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'han-route-5': {
-    center: [120.637968, 24.159315],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.564732, 24.206477],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'han-route-6': {
-    center: [121.297362, 24.961477],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.393629, 23.432063],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'han-route-7': {
-    center: [121.464692, 24.986201],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [119.932898, 26.159126],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'han-route-8': {
-    center: [121.514567, 25.001814],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.352417, 22.567179],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
+  },
+  'han-route-9': {
+    center: [120.568866, 23.970183],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
+  },
+  'han-route-10': {
+    center: [121.492139, 25.073297],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   }
-  
 };
 
 // Tsai's routes map
 let mapTsai = new mapboxgl.Map({
   container: 'map-tsai',
   style: 'mapbox://styles/luffychen/ck4l21n2g0oc11cp4zzwrdvnc',
-  center: [121.881, 23.643],
-  zoom: 6,
+  center: [121.009517, 24.828411],
+  zoom: 16,
   bearing: 20,
   pitch: 30,
   minZoom: 6
@@ -104,55 +167,66 @@ let mapTsai = new mapboxgl.Map({
 
 let chaptersTsai = {
   'tsai-route-1': {
-    center: [121.264041, 24.96574],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [121.009517, 24.828411],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'tsai-route-2': {
-    center: [121.465785, 25.068627],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [121.155255, 22.755352],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'tsai-route-3': {
-    center: [120.194002, 22.986756],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.6816, 23.904987],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'tsai-route-4': {
-    center: [120.492881, 23.85312],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.966981, 24.808912],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'tsai-route-5': {
-    center: [120.637968, 24.159315],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.48499, 22.676693],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'tsai-route-6': {
-    center: [121.297362, 24.961477],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [119.567709, 23.575697],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'tsai-route-7': {
-    center: [121.464692, 24.986201],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.425216, 23.550282],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   },
   'tsai-route-8': {
-    center: [121.514567, 25.001814],
-    zoom: 17,
-    bearing: 20,
-    pitch: 30
+    center: [120.489134, 24.017367],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
+  },
+  'tsai-route-9': {
+    center: [121.51501, 25.039809],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
+  },
+  'tsai-route-10': {
+    center: [121.447539, 25.064957],
+    zoom: Math.floor(Math.random()*(2))+15,
+    bearing: Math.floor(Math.random()*(180))+1,
+    pitch: Math.floor(Math.random()*(60))+1
   }
 };
-
 
 // On every scroll event, check which element is on screen
 window.onscroll = function () {

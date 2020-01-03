@@ -18,23 +18,20 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="">
   <meta property="og:image" content="">
-  <meta property="og:site_name" content="Site Name, i.e. Moz" />
-  <meta property="fb:admins" content="Facebook numberic ID" />
-
-  <meta property="article:published_time" content="2013-09-17T05:59:00+01:00" />
-  <meta property="article:modified_time" content="2013-09-16T19:08:47+01:00" />
-  <meta property="article:section" content="Article Section" />
-  <meta property="article:tag" content="Article Tag" />
+  <meta property="og:site_name" content="web108_storytellingProject"/>
 
   <!-- Favicon -->
   <link rel="icon" href="./Assets/favicon.ico">
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/fcea51171e.js" crossorigin="anonymous"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/fcea51171e.js" crossorigin="anonymous"></script>
+  <!-- Vue.js 2.6 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 
   <!-- Mapbox GL  -->
   <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
@@ -46,211 +43,319 @@
 <body>
   <section id="landing"></section>
   <section id="leading"></section>
-  <section id="routes-han" class="routes">
-    <div id="map-han"></div>
-    <div id="features-han">
-      <section id="han-route-1">
-        <h3>221b  St.</h3>
-        <p>
-          November 1895. London is shrouded in fog and Sherlock Holmes and
-          Watson pass time restlessly awaiting a new case. "The London
-          criminal is certainly a dull fellow," Sherlock bemoans. "There have
-          been numerous petty thefts," Watson offers in response. Just then a
-          telegram arrives from Sherlock's brother Mycroft with a mysterious
-          case.
-        </p>
-      </section>
-      <section id="han-route-2">
-        <h3>Aldgate Station</h3>
-        <p>
-          Arthur Cadogan West was found dead, head crushed in on train tracks
-          at Aldgate Station at 6AM Tuesday morning. West worked at Woolwich
-          Arsenal on the Bruce-Partington submarine, a secret military
-          project. Plans for the submarine had been stolen and seven of the
-          ten missing papers were found in West's possession. Mycroft implores
-          Sherlock to take the case and recover the three missing papers.
-        </p>
-      </section>
-      <section id="han-route-3">
-        <h3>London Bridge</h3>
-        <p>
-          Holmes and Watson's investigations take them across London. Sherlock
-          deduces that West was murdered elsewhere, then moved to Aldgate
-          Station to create the illusion that he was crushed on the tracks by
-          a train. On their way to Woolwich Sherlock dispatches a telegram to
-          Mycroft at London Bridge: "Send list of all foreign spies known to
-          be in England, with full address."
-        </p>
-      </section>
-      <section id="han-route-4">
-        <h3>Woolwich Arsenal</h3>
-        <p>
-          While investigating at Woolwich Arsenal Sherlock learns that West
-          did not have the three keys&mdash;door, office, and
-          safe&mdash;necessary to steal the papers. The train station clerk
-          mentions seeing an agitated West boarding the 8:15 train to London
-          Bridge. Sherlock suspects West of following someone who had access
-          to the Woolwich chief's keyring with all three keys.
-        </p>
-      </section>
-      <section id="han-route-5">
-        <h3>Gloucester Road</h3>
-        <p>
-          Mycroft responds to Sherlock's telegram and mentions several spies.
-          Hugo Oberstein of 13 Caulfield Gardens catches Sherlock's eye. He
-          heads to the nearby Gloucester Road station to investigate and
-          learns that the windows of Caulfield Gardens open over rail tracks
-          where trains stop frequently.
-        </p>
-      </section>
-      <section id="han-route-6">
-        <h3>13 Caulfield Gardens</h3>
-        <p>
-          Holmes deduces that the murderer placed West atop a stopped train at
-          Caulfield Gardens. The train traveled to Aldgate Station before
-          West's body finally toppled off. Backtracking to the criminal's
-          apartment, Holmes finds a series of classified ads from
-          <em>The Daily Telegraph</em> stashed away. All are under the name
-          Pierrot: "Monday night after nine. Two taps. Only ourselves. Do not
-          be so suspicious. Payment in hard cash when goods delivered."
-        </p>
-      </section>
-      <section id="han-route-7">
-        <h3>The Daily Telegraph</h3>
-        <p>
-          Holmes and Watson head to The Daily Telegraph and place an ad to
-          draw out the criminal. It reads: "To-night. Same hour. Same place.
-          Two taps. Most vitally important. Your own safety at stake.
-          Pierrot." The trap works and Holmes catches the criminal: Colonel
-          Valentine Walter, the brother of Woolwich Arsenal's chief. He
-          confesses to working for Hugo Oberstein to obtain the submarine
-          plans in order to pay off his debts.
-        </p>
-      </section>
-      <section id="han-route-8">
-        <h3>Charing Cross Hotel</h3>
-        <p>
-          Walter writes to Oberstein and convinces him to meet in the smoking
-          room of the Charing Cross Hotel where he promises additional plans
-          for the submarine in exchange for money. The plan works and Holmes
-          and Watson catch both criminals.
-        </p>
-        <small id="citation">
-          Adapted from
-          <a href="http://www.gutenberg.org/files/2346/2346-h/2346-h.htm">Project Gutenberg</a>
-        </small>
-      </section>
+  <section id="routes-han" class="routes container-fluid">
+    <div class="row no-gutters">
+      <div class="col-12 col-md-6">
+        <div id="map-han"></div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div id="features-han">
+          <section id="han-route-1">
+            <div>
+              <h3 class="mb-3">2019年8月3日</h3>
+              <h2>桃園「相見歡」造勢活動</h2>
+              <h5>桃園市<i class="fas fa-map-marker-alt"></i>中壢興仁公園</h5>
+              <article class="my-3">
+                <p>桃園是韓國瑜2020年總統競選的第一站。</p>
+                <p>桃園是國民黨大本營，是藍營的重要地盤，但去年桃園市長鄭文燦贏得更多的選票。</p>
+                <p>立委參選人、桃園市議員萬美玲稱，韓國瑜這次的走訪是「收復失土的團結之旅」。</p>
+              </article>
+              <h4 class="mb-3">2018年桃園市長選舉政黨得票率</h4>
+              <svg data-city="Taoyuan"></svg>
+            </div>
+          </section>
+          <section id="han-route-2">
+            <div>
+              <h3 class="mb-3">2019年10月19日</h3>
+              <h2>台南首場造勢晚會</h2>
+              <h5>台南市<i class="fas fa-map-marker-alt"></i>水萍塭公園</h5>
+              <article class="my-3">
+                <p>10月19是韓國瑜在台南的第一場造勢活動。</p>
+                <p>前總統馬英九、國民黨主席吳敦義與韓國瑜於晚上7時同台亮相。</p>
+                <p>主辦單位表示，現場已超過十萬人參與。</p>
+                <p>在韓國瑜離場時，遭不明人士砸雞蛋奇襲</p>
+              </article>
+              <h4 class="mb-3">2018年台南市長選舉政黨得票率</h4>
+              <svg data-city="Tainan"></svg>
+            </div>
+          </section>
+          <section id="han-route-3">
+            <div>
+              <h3 class="mb-3">2019年11月11日</h3>
+              <h2>「鄉親來開講」－韓國瑜後援會成立大會</h2>
+              <h5>雲林縣<i class="fas fa-map-marker-alt"></i>西螺</h5>
+              <article class="my-3">
+                <p>韓國瑜晚間參加「後頭厝西螺大埔心韓國瑜後援會成立大會」</p>
+                <p>做為雲林縣女婿的韓國瑜在會上承諾：</p>
+                <p>當選後要幫助雲林拜託長期建設落後、人口外漂的命運，</p>
+                <p>讓農民、勞工過好日子，讓外漂子弟回家。</p>
+              </article>
+              <h4 class="mb-3">2018年雲林縣長選舉政黨得票率</h4>
+              <svg data-city="Yunlin"></svg>
+            </div>
+          </section>
+          <section id="han-route-4">
+            <div>
+              <h3 class="mb-3">2019年11月18日</h3>
+              <h2>林奕華立委候選人活動</h2>
+              <h5>台北市<i class="fas fa-map-marker-alt"></i>成功國宅</h5>
+              <article class="my-3">
+                <p>韓國瑜在11月18日連趕5場競選活動。</p>
+                <p>先後為黨籍立委參選人賴士葆、林奕華、費鴻泰、李彥秀、蔣萬安站台拜票。</p>
+                <p>韓國瑜在現場強調，</p>
+                <p>國民黨除了要幫台灣人民拼經濟外，</p>
+                <p>更重要的是肩負起維護中華民國主權的責任。</p>
+                <p>韓國瑜今天還有這些行程：</p>
+                <ul>
+                  <li>出席賴士葆立委候選人活動</li>
+                  <li>出席費鴻泰立委候選人活動</li>
+                  <li>出席李彥秀立委候選人活動</li>
+                  <li>出席蔣萬安立委候選人活動</li>
+                </ul>
+              </article>
+              <h4 class="mb-3">2018年台北市長選舉政黨得票率</h4>
+              <svg data-city="Taipei"></svg>
+            </div>
+          </section>
+          <section id="han-route-5">
+            <div>
+              <h3 class="mb-3">2019年11月23日</h3>
+              <h2>立委參選人顏寬恒競選總部加油打氣</h2>
+              <h5>台中市<i class="fas fa-map-marker-alt"></i></h5>
+              <article class="my-3">
+                <p>韓國瑜在11月23日連續出席7場立委參選人的活動，</p>
+                <p>分別為江啟臣、黃仁、林佳新、顏寬恒等人加油打氣。</p>
+                <p>韓國瑜今天還有這些行程：</p>
+                <ul>
+                  <li>出席立委候選人江啟臣競選總部成立大會</li>
+                  <li>出席立委軍公教警挺韓成立大會</li>
+                  <li>出席立委參選人出席莊子富屯區庶民起義誓師大會</li>
+                  <li>出席立委參選人林佳新競選總部加油打氣</li>
+                  <li>出席立委國民黨125周年黨慶活動 <i class="fas fa-map-marker-alt"></i> 彰化縣</li>
+                </ul>
+              </article>
+              <h4 class="mb-3">2018年台中市長選舉政黨得票率</h4>
+              <svg data-city="Taichung"></svg>
+            </div>
+          </section>
+          <section id="han-route-6">
+            <div>
+              <h3 class="mb-3">2019年11月24日</h3>
+              <h2>韓國瑜暨立委候選人王啟澧聯合造勢晚會</h2>
+              <h5>嘉義縣<i class="fas fa-map-marker-alt"></i></h5>
+              <article class="my-3">
+                <p>11月24，韓國瑜與蔡英文於嘉義市正面交鋒，各為黨籍立委參選人造勢。</p>
+                <p>晚上七點，韓國瑜為黨籍嘉義縣海區立委候選人王啟澧站台，</p>
+                <p>而與此同時，</p>
+                <p>蔡英文在相隔一公里外的中華電信水上服務中心旁，</p>
+                <p>為嘉義縣海區黨籍立委候選人蔡易餘造勢。</p>
+                <p>韓國瑜今天還有這些行程：</p>
+                <ul>
+                  <li>出席傅大偉立委競選總部</li>
+                  <li>出席嘉義市萌寵音樂嘉年華</li>
+                </ul>
+              </article>
+              <h4 class="mb-3">2018年嘉義縣長選舉政黨得票率</h4>
+              <svg data-city="Chiayi"></svg>
+            </div>
+          </section>
+          <section id="han-route-7">
+            <div>
+              <h3 class="mb-3">2019年11月30日</h3>
+              <h2>韓國瑜暨陳雪生聯合競選總部成立大會</h2>
+              <h5>連江縣<i class="fas fa-map-marker-alt"></i></h5>
+              <article class="my-3">
+                <p>曾在馬祖服過兵役的韓國瑜，</p>
+                <p>在出席連江縣立法委員參選人陳雪生的聯合競選總部成立時表示：</p>
+                <p>他對馬祖有著不同的感情，充滿了當年當兵的回憶。</p>
+                <p>而看著現場不少的支持者，韓國瑜直呼：</p>
+                <p>「看起來韓國瑜的民調不會太差嘛！」</p>
+              </article>
+              <h4 class="mb-3">2018年連江縣長選舉政黨得票率</h4>
+              <svg data-city="Lianjiang"></svg>
+            </div>
+          </section>
+          <section id="han-route-8">
+            <div>
+              <h3 class="mb-3">2019年12月1日</h3>
+              <h2>韓國瑜與陳麗娜聯合競選總部成立大會</h2>
+              <h5>高雄市<i class="fas fa-map-marker-alt"></i></h5>
+              <article class="my-3">
+                <p>韓國瑜在12月1日參加藍營立委陳麗娜的聯合競選總部成立大會，</p>
+                <p>在面對支持者，他高喊：「高雄人會告訴全台灣、全世界，高雄人的頭腦已經清醒了！」</p>
+                <p>「如果你政黨不好好執政，高雄人會讓你下台。」</p>
+                <p>韓國瑜今天還有這些行程：</p>
+                <ul>
+                  <li>屏東縣聯合競選總部成立 <i class="fas fa-map-marker-alt"></i> 屏東市</li>
+                  <li>韓國瑜與黃昭順聯合競選總部成立大會</li>
+                  <li>韓國瑜與黃柏霖聯合競選總部團結大會</li>
+                  <li>韓國瑜與王齡嬌聯合競選政見說明會</li>
+                </ul>
+              </article>
+              <h4 class="mb-3">2018年高雄市長選舉政黨得票率</h4>
+              <svg data-city="Kaohsiung"></svg>
+            </div>
+          </section>
+          <section id="han-route-9">
+            <div>
+              <h3 class="mb-3">2019年12月14日</h3>
+              <h2>彰化聯合競選總部成立</h2>
+              <h5>彰化縣<i class="fas fa-map-marker-alt"></i>龍燈公園</h5>
+              <article class="my-3">
+                <p>韓國瑜在12月14日出席彰化聯合競選總部成立大會，</p>
+                <p>彰化縣議長謝典林在授旗儀式中將旌旗揮斷，</p>
+                <p>謝典林稱，「打斷手骨顛倒勇」，這根旗竿成為彰化緊密團結的精神指標！</p>
+                <p>韓國瑜今天還有這些行程：</p>
+                <ul>
+                  <li>出席雲林聯合競選總部成立 <i class="fas fa-map-marker-alt"></i> 雲林縣</li>
+                  <li>出席嘉義聯合競選總部成立 <i class="fas fa-map-marker-alt"></i> 嘉義市</li>
+                </ul>
+              </article>
+              <h4 class="mb-3">2018年彰化縣長選舉政黨得票率</h4>
+              <svg data-city="Changhua"></svg>
+            </div>
+          </section>
+          <section id="han-route-10">
+            <div>
+              <h3 class="mb-3">2019年12月22日</h3>
+              <h2>出席立委李翁月娥聯合競選總部</h2>
+              <h5>新北市<i class="fas fa-map-marker-alt"></i></h5>
+              <article class="my-3">
+                <p>12月22日，韓國瑜為新北市第三選區（三重）立委候選人李翁月娥站台，</p>
+                <p>在被稱為「綠大於藍」的三重地區，</p>
+                <p>韓國瑜呼籲選民「頭腦要清楚」，「不要迷信永遠投哪個政黨」。</p>
+                <p>他稱當選後的第一件事，便是重啟特偵組，</p>
+                <p>針對立委、部長、政府高官和總統，嚴查嚴辦。</p>
+                <p>韓國瑜今天還有這些行程：</p>
+                <ul>
+                  <li>陪同立委候選人孫大千參拜霞海城隍廟</li>
+                  <li>陪同立委候選人汪志冰參拜關渡宮</li>
+                  <li>出席總統與立委候選人李永萍聯合造勢活動</li>
+                  <li>出席總統與立委候選人黃志雄聯合造勢活動</li>
+                  <li>出席全國雲林同鄉會 <i class="fas fa-map-marker-alt"></i> 五股工商展覽中心</li>
+                </ul>
+              </article>
+              <h4 class="mb-3">2018年新北市長選舉政黨得票率</h4>
+              <svg data-city="newTaipei"></svg>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   </section>
   <section id="bridge"></section>
-  <section id="routes-tsai" class="routes">
-    <div id="map-tsai"></div>
-    <div id="features-tsai">
-      <section id="tsai-route-1">
-        <h3>221b  St.</h3>
-        <p>
-          November 1895. London is shrouded in fog and Sherlock Holmes and
-          Watson pass time restlessly awaiting a new case. "The London
-          criminal is certainly a dull fellow," Sherlock bemoans. "There have
-          been numerous petty thefts," Watson offers in response. Just then a
-          telegram arrives from Sherlock's brother Mycroft with a mysterious
-          case.
-        </p>
-      </section>
-      <section id="tsai-route-2">
-        <h3>Aldgate Station</h3>
-        <p>
-          Arthur Cadogan West was found dead, head crushed in on train tracks
-          at Aldgate Station at 6AM Tuesday morning. West worked at Woolwich
-          Arsenal on the Bruce-Partington submarine, a secret military
-          project. Plans for the submarine had been stolen and seven of the
-          ten missing papers were found in West's possession. Mycroft implores
-          Sherlock to take the case and recover the three missing papers.
-        </p>
-      </section>
-      <section id="tsai-route-3">
-        <h3>London Bridge</h3>
-        <p>
-          Holmes and Watson's investigations take them across London. Sherlock
-          deduces that West was murdered elsewhere, then moved to Aldgate
-          Station to create the illusion that he was crushed on the tracks by
-          a train. On their way to Woolwich Sherlock dispatches a telegram to
-          Mycroft at London Bridge: "Send list of all foreign spies known to
-          be in England, with full address."
-        </p>
-      </section>
-      <section id="tsai-route-4">
-        <h3>Woolwich Arsenal</h3>
-        <p>
-          While investigating at Woolwich Arsenal Sherlock learns that West
-          did not have the three keys&mdash;door, office, and
-          safe&mdash;necessary to steal the papers. The train station clerk
-          mentions seeing an agitated West boarding the 8:15 train to London
-          Bridge. Sherlock suspects West of following someone who had access
-          to the Woolwich chief's keyring with all three keys.
-        </p>
-      </section>
-      <section id="tsai-route-5">
-        <h3>Gloucester Road</h3>
-        <p>
-          Mycroft responds to Sherlock's telegram and mentions several spies.
-          Hugo Oberstein of 13 Caulfield Gardens catches Sherlock's eye. He
-          heads to the nearby Gloucester Road station to investigate and
-          learns that the windows of Caulfield Gardens open over rail tracks
-          where trains stop frequently.
-        </p>
-      </section>
-      <section id="tsai-route-6">
-        <h3>13 Caulfield Gardens</h3>
-        <p>
-          Holmes deduces that the murderer placed West atop a stopped train at
-          Caulfield Gardens. The train traveled to Aldgate Station before
-          West's body finally toppled off. Backtracking to the criminal's
-          apartment, Holmes finds a series of classified ads from
-          <em>The Daily Telegraph</em> stashed away. All are under the name
-          Pierrot: "Monday night after nine. Two taps. Only ourselves. Do not
-          be so suspicious. Payment in hard cash when goods delivered."
-        </p>
-      </section>
-      <section id="tsai-route-7">
-        <h3>The Daily Telegraph</h3>
-        <p>
-          Holmes and Watson head to The Daily Telegraph and place an ad to
-          draw out the criminal. It reads: "To-night. Same hour. Same place.
-          Two taps. Most vitally important. Your own safety at stake.
-          Pierrot." The trap works and Holmes catches the criminal: Colonel
-          Valentine Walter, the brother of Woolwich Arsenal's chief. He
-          confesses to working for Hugo Oberstein to obtain the submarine
-          plans in order to pay off his debts.
-        </p>
-      </section>
-      <section id="tsai-route-8">
-        <h3>Charing Cross Hotel</h3>
-        <p>
-          Walter writes to Oberstein and convinces him to meet in the smoking
-          room of the Charing Cross Hotel where he promises additional plans
-          for the submarine in exchange for money. The plan works and Holmes
-          and Watson catch both criminals.
-        </p>
-        <small id="citation">
-          Adapted from
-          <a href="http://www.gutenberg.org/files/2346/2346-h/2346-h.htm">Project Gutenberg</a>
-        </small>
-      </section>
+  <section id="routes-tsai" class="routes container-fluid">
+    <div class="row flex-row-reverse no-gutters">
+      <div class="col-12 col-md-6">
+        <div id="map-tsai"></div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div id="features-tsai">
+          <section id="tsai-route-1">
+            <div>
+              <h3 class="mb-3">2019年11月15日</! -->
+              <h2>新竹縣競選總部成立晚會</h2>
+              <h5>新竹縣<i class="fas fa-map-marker-alt"></i></h5>
+              <h4 class="mb-3">2018年新竹縣長選舉政黨得票率</h4>
+              <svg data-city="Hsinchu"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-2">
+            <div>
+              <h3 class="mb-3">2019年11月22日</h3>
+              <h2>台東縣聯合競選總部成立大會</h2>
+              <h5>台東縣<i class="fas fa-map-marker-alt"></i>台東縣南京路市民廣場，南京路新生路口</h5>
+              <h4 class="mb-3">2018年台東縣長選舉政黨得票率</h4>
+              <svg data-city="Taitung"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-3">
+            <div>
+              <h3 class="mb-3">2019年11月24日</h3>
+              <h2>連任南投縣競選總部成立大會</h2>
+              <h5>南投縣<i class="fas fa-map-marker-alt"></i></h5>
+              <h4 class="mb-3">2018年南投縣長選舉政黨得票率</h4>
+              <svg data-city="Nantou"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-4">
+            <div>
+              <h3 class="mb-3">2019年11月30日</h3>
+              <h2>新竹市聯合競選總部成立大會</h2>
+              <h5>新竹市<i class="fas fa-map-marker-alt"></i></h5>
+              <h4 class="mb-3">2018年新竹市長選舉政黨得票率</h4>
+              <svg data-city="Hsinchu-city"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-5">
+            <div>
+              <h3 class="mb-3">2019年12月7日</h3>
+              <h2>屏東縣競選總部成立大會</h2>
+              <h5>屏東縣<i class="fas fa-map-marker-alt"></i></h5>
+              <h4 class="mb-3">2018年屏東縣長選舉政黨得票率</h4>
+              <svg data-city="Pingtung"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-6">
+            <div>
+              <h3 class="mb-3">2019年12月8日</h3>
+              <h2>澎湖縣聯合競選總部成立大會</h2>
+              <h5>澎湖縣<i class="fas fa-map-marker-alt"></i></h5>
+              <h4 class="mb-3">2018年澎湖縣長選舉政黨得票率</h4>
+              <svg data-city="Penghu"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-7">
+            <div>
+              <h3 class="mb-3">2019年12月13日</h3>
+              <h2>嘉義縣山線競總成立大會</h2>
+              <h5>嘉義縣<i class="fas fa-map-marker-alt"></i></h5>
+              <h4 class="mb-3">2018年嘉義縣長選舉政黨得票率</h4>
+              <svg data-city="Chiayi"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-8">
+            <div>
+              <h3 class="mb-3">2019年12月15日</h3>
+              <h2>護國保台巡迴助選團</h2>
+              <h5>彰化縣<i class="fas fa-map-marker-alt"></i></h5>
+              <h4 class="mb-3">2018年彰化縣長選舉政黨得票率</h4>
+              <svg data-city="Changhua"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-9">
+            <div>
+              <h3 class="mb-3">2019年12月21日</h3>
+              <h2>閃靈台灣大凱旋林昶佐造勢晚會</h2>
+              <h5>台北市<i class="fas fa-map-marker-alt"></i>凱達格蘭大道</h5>
+              <h4 class="mb-3">2018年台北市長選舉政黨得票率</h4>
+              <svg data-city="Taipei"></svg>
+            </div>
+          </section>
+          <section id="tsai-route-10">
+            <div>
+              <h3 class="mb-3">2019年12月22日</h3>
+              <h2>中華民國新北市雲林同鄉總會總會長第十屆會員代表大會</h2>
+              <h5>新北市<i class="fas fa-map-marker-alt"></i>五股工商展覽中心</h5>
+              <h4 class="mb-3">2018年新北市長選舉政黨得票率</h4>
+              <svg data-city="newTaipei"></svg>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   </section>
   <section id="analysis"></section>
+  <footer></footer>
 
   <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+  <!-- D3.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js" integrity="sha256-m0QmIsBXcOMiETRmpT3qg2IQ/i0qazJA2miCHzOmS1Y=" crossorigin="anonymous"></script>
+  
   <!-- Custom JS -->
   <script src="JavaScript/all.js"></script>
 </body>

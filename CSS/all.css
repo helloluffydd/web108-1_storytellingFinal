@@ -22,7 +22,6 @@
           box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Microsoft JhengHei", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 html,
@@ -30,6 +29,19 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Microsoft JhengHei", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                        supported by Chrome and Opera */
 }
 
 section {
@@ -55,35 +67,59 @@ section {
 .routes {
   height: auto;
   position: relative;
+  padding: 35px;
+}
+
+@media (max-width: 768px) {
+  .routes {
+    padding: 0;
+  }
 }
 
 .routes #map-han {
-  width: 50%;
+  width: 100%;
   height: 100vh;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 
-.routes #features-han {
-  width: 50%;
-  margin: 100vh 0 0 50%;
-  background-color: #fafafa;
+.routes #map-han.fixedBackground {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.routes i {
+  font-size: 18px;
+  color: red;
+  margin: 0 3px 0 5px;
+}
+
+.routes ul {
+  list-style-position: inside;
 }
 
 .routes #map-tsai {
-  width: 50%;
+  width: 100%;
   height: 100vh;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  left: 50%;
 }
 
-.routes #features-tsai {
-  width: 50%;
-  margin-top: -100vh;
-  background-color: #fafafa;
+.routes #map-tsai.fixedBackground {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  -webkit-transition: all .5s;
+  transition: all .5s;
 }
 
 .routes section {
@@ -95,12 +131,24 @@ section {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .routes section {
+    padding: 25px 0;
+  }
+  .routes section div {
+    padding: 25px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  .routes section article p {
+    margin: 0;
+    line-height: 2;
+  }
 }
 /*# sourceMappingURL=all.css.map */

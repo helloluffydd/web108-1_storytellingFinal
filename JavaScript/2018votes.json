@@ -1,0 +1,134 @@
+{
+  "Chiayi-city": [{
+    "KMT": 41.18,
+    "DPP": 39.56,
+    "Other": 19.26,
+    "difference": 1.62
+  }],
+  "Chiayi": [{
+    "KMT": 29.54,
+    "DPP": 50.95,
+    "Other": 19.5,
+    "difference": -21.41
+  }],
+  "Changhua": [{
+    "KMT": 53.18,
+    "DPP": 39.87,
+    "Other": 6.95,
+    "difference": 13.31
+  }],
+  "Hsinchu-city": [{
+    "KMT": 27.87,
+    "DPP": 49.57,
+    "Other": 22.56,
+    "difference": -21.7
+  }],
+  "Hsinchu": [{
+    "KMT": 38.2,
+    "DPP": 27.68,
+    "Other": 34.12,
+    "difference": 10.52
+  }],
+  "Hualien": [{
+    "KMT": 71.52,
+    "DPP": 25.87,
+    "Other": 2.61,
+    "difference": 45.65
+  }],
+  "Kinmen": [{
+    "KMT": 47.78,
+    "DPP": 0,
+    "Other": 52.22,
+    "difference": 47.78
+  }],
+  "Kaohsiung": [{
+    "KMT": 53.87,
+    "DPP": 44.8,
+    "Other": 1.34,
+    "difference": 9.07
+  }],
+  "keelung": [{
+    "KMT": 45.86,
+    "DPP": 54.14,
+    "Other": 0,
+    "difference": -8.28
+  }],
+  "Lianjiang": [{
+    "KMT": 65.62,
+    "DPP": 0,
+    "Other": 34.38,
+    "difference": 65.62
+  }],
+  "Penghu": [{
+    "KMT": 38.87,
+    "DPP": 32.78,
+    "Other": 28.34,
+    "difference": 6.09
+  }],
+  "Miaoli": [{
+    "KMT": 57.74,
+    "DPP": 0,
+    "Other": 42.26,
+    "difference": 57.74
+  }],
+  "Nantou": [{
+    "KMT": 66.72,
+    "DPP": 33.28,
+    "Other": 0,
+    "difference": 33.44
+  }],
+  "newTaipei": [{
+    "KMT": 57.15,
+    "DPP": 42.85,
+    "Other": 0,
+    "difference": 14.3
+  }],
+  "Pingtung": [{
+    "KMT": 42.01,
+    "DPP": 55.9,
+    "Other": 2.09,
+    "difference": -13.89
+  }],
+  "Taichung": [{
+    "KMT": 56.57,
+    "DPP": 42.35,
+    "Other": 1.09,
+    "difference": 14.22
+  }],
+  "Tainan": [{
+    "KMT": 32.37,
+    "DPP": 38.02,
+    "Other": 29.61,
+    "difference": -5.65
+  }],
+  "Taipei": [{
+    "KMT": 40.82,
+    "DPP": 17.29,
+    "Other": 41.89,
+    "difference": 0
+  }],
+  "Taitung": [{
+    "KMT": 59.05,
+    "DPP": 37.04,
+    "Other": 3.91,
+    "difference": 22.01
+  }],
+  "Taoyuan": [{
+    "KMT": 39.42,
+    "DPP": 53.46,
+    "Other": 7.12,
+    "difference": -14.04
+  }],
+  "Yilan": [{
+    "KMT": 49.48,
+    "DPP": 38.23,
+    "Other": 12.29,
+    "difference": 11.25
+  }],
+  "Yunlin": [{
+    "KMT": 53.83,
+    "DPP": 41.72,
+    "Other": 4.45,
+    "difference": 12.11
+  }]
+}
