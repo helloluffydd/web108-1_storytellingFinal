@@ -6,11 +6,11 @@ $(document).ready(function() {
   let routeHan = $('#routes-han').offset().top;
   let routeTsai = $('#routes-tsai').offset().top;
   let bridgeSection = $('#bridge').offset().top;
-  let analysisSection = $('#analysis').offset().top;
+  // let analysisSection = $('#analysis').offset().top;
 
   
   $(window).scroll(function() {
-    // let windowHeight = $(this).height();
+    let windowHeight = $(this).height();
     let scrolledY = $(this).scrollTop();
     
     // Whether the viewport is less than, or equal to, 768 pixels wide
@@ -18,7 +18,8 @@ $(document).ready(function() {
 
     // Switch the whoScrolled to fly the map
     // scrolledY >= routeTsai ? whoScrolled = 'Tsai' : whoScrolled = 'Han';
-    whoScrolled = (scrolledY >= routeTsai ? 'Tsai' : 'Han');
+    whoScrolled = (scrolledY >= bridgeSection ? 'Tsai' : 'Han');
+    // console.log(scrolledY, bridgeSection)
 
     // scrollZoom forbidden before scrolling to the route sections
     mapHan.scrollZoom = (scrolledY >= routeHan - 300 && scrolledY <= routeHan + 300 ? false : true);

@@ -10,6 +10,24 @@
   margin: 0;
 }
 
+
+// Custom SCSS
+@keyframes scrollReminder {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
 html,
 body {
   width: 100%;
@@ -23,15 +41,99 @@ section {
 }
 
 #landing {
-  background-color: gold;
+  position: relative;
+
+  .landing-main {
+    width: 80%;
+    @include pos-a(50%);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .landing-title {
+    font-size: 54px;
+    color: #fff;
+    text-shadow: 2px 3px 0px #000;
+  }
+
+  .landing-subtitle {
+    font-size: 24px;
+    color: #000;
+    text-shadow: 2px 2px 0px #fff;
+  }
+
+  .landing-lead {
+    width: 80%;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    @include pos-a(50%, 85%);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .scroll-reminder {
+    font-size: 28px;
+    color: gold;
+    animation: scrollReminder 1.5s -.5s infinite ease-in;
+  }
+
+  .landing-pic {
+    @include size(100%, 100vh);
+
+    @media (max-width: 768px) {
+      @include size(100%, 50vh);
+    }
+  }
+
+  .han-pic {
+    // background-image: url('https://i.imgur.com/xx1WX7i.png');  
+    background-image: url('../Assets/han.png'); 
+  }
+
+  .tsai-pic {
+    // background-image: url('https://i.imgur.com/TTbG1Wd.png');  
+    background-image: url('../Assets/tsai.png');  
+  }
 }
 
 #leading {
-  background-color: cyan;
+  // background-image: url('https://s.yimg.com/ny/api/res/1.2/5vEInSnodno.Rq43GhLVbA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjAwO2g9NDAw/https://media.zenfs.com/en/stormmediagroup.com/6cd17fc536064640ca9a6e2f1ff7c9b6');
+  background-image: url('../Assets/leading.jpg');
+  // https://s.yimg.com/ny/api/res/1.2/5vEInSnodno.Rq43GhLVbA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjAwO2g9NDAw/https://media.zenfs.com/en/stormmediagroup.com/6cd17fc536064640ca9a6e2f1ff7c9b6
+  position: relative;
+  font-weight: bold;
+  line-height: 1.75;
+  color: #fff;
+  // color: #6DD0CD;  
+
+  .leading-main {
+    @include pos-a(5%, 9%);
+  }
+  
+  .leading-intro {
+    @include pos-a(55%, 80%);
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  span {
+    font-size: 28px;
+    color: gold;
+  }
 }
 
 #bridge {
-  background-color: black;
+  position: relative;
+  background-image: url('../Assets/bridge.jpg');
+  color: #fff;
+  line-height: 1.75;
+
+  .bridge-main {
+    @include pos-a(5%, 9%);
+    // z-index: 1;
+  }
 }
 
 #analysis {
@@ -42,6 +144,7 @@ section {
   height: auto;
   position: relative;
   padding: 35px;
+  
 
   @media (max-width: 768px) {
     padding: 0;
@@ -56,15 +159,23 @@ section {
       @include size(100%, 100vh);
       position: fixed;
       top: 0;
+      z-index: -2;
+      transition: all .5s;
+    }
+  }
+
+  #map-tsai {
+    @include size(100%, 100vh);
+    position: sticky;
+    top: 0;
+
+    &.fixedBackground {
+      @include size(100%, 100vh);
+      position: fixed;
+      top: 0;
       z-index: -1;
       transition: all .5s;
     }
-
-    // @media (max-width: 768px) {
-    //   @include size(100%, 100vh);
-    //   position: fixed;
-    //   top: 0;
-    // }
   }
 
   i {
@@ -76,43 +187,25 @@ section {
   ul {
     list-style-position: inside;
   }
-
-  // #features-han {
-    // width: 50%;
-    // margin: -100vh 0 0 0;
-    // background-color: #fafafa;
-  // }
-
-  #map-tsai {
-    @include size(100%, 100vh);
-    position: sticky;
-    top: 0;
-    // left: 50%;
-
-    &.fixedBackground {
-      @include size(100%, 100vh);
-      position: fixed;
-      top: 0;
-      z-index: -1;
-      transition: all .5s;
-    }
-  }
-
-  // #features-tsai {
-  //   width: 50%;
-  //   margin-top: -100vh;
-  // background-color: #fafafa;
-  // }
 }
 
 .routes section {
   padding: 25px 50px;
+
+  // .content {
+    // padding: 15px;
+    // background-color: rgba(#000, 0.5);
+    // border: 1px solid #00358A;
+    
+  // }
+
   line-height: 25px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 
   @media (max-width: 768px) {
+    height: auto;
     padding: 25px 0;
     
     div {
@@ -128,3 +221,19 @@ section {
   }
 }
 
+footer {
+  font-size: 16px;
+  padding: 30px  20px;
+
+  li {
+    list-style: none ;
+  }
+}
+
+
+#han-route-1 {
+  // background-image: url('https://media.zenfs.com/zh-tw/nownews.com/2041b7493923480ecde5e02a8a69a3d5');
+  background-size: cover;
+  background-position: center;
+  // position: relative;
+}

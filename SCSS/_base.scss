@@ -64,17 +64,17 @@
 }
 
 // Styling Class Management --------------------------------------
-.bg-cover{
+.bg-cover {
   background-position: center;
   background-size: cover;
 }
 
-.negative-row-margin{
+.negative-row-margin {
   margin: 0px -15px;
 }
 
 // 使絕對定位元素撐滿父元素
-.pos-a-full-size{
+.pos-a-full-size {
   position: absolute;
   left: 0px; right: 0px;
   top: 0px; bottom: 0px;
