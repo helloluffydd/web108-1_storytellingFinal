@@ -563,7 +563,7 @@ section {
 
 @media (max-width: 768px) {
   #conclusion {
-    height: 100%;
+    height: auto;
   }
 }
 
@@ -595,17 +595,19 @@ footer img {
   height: 85px;
 }
 
-span {
-  color: gold;
-  font-size: 24px;
-}
-
 span.han {
   color: #7cdeff;
+  font-size: 24px;
 }
 
 span.tsai {
   color: #7cff8e;
+  font-size: 24px;
+}
+
+span.highlight {
+  color: gold;
+  font-size: 24px;
 }
 
 span.underline {

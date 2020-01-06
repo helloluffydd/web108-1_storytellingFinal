@@ -109,7 +109,6 @@ section {
 #leading {
   // background-image: url('https://s.yimg.com/ny/api/res/1.2/5vEInSnodno.Rq43GhLVbA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjAwO2g9NDAw/https://media.zenfs.com/en/stormmediagroup.com/6cd17fc536064640ca9a6e2f1ff7c9b6');
   background-image: url('../Assets/leading.jpg');
-  // https://s.yimg.com/ny/api/res/1.2/5vEInSnodno.Rq43GhLVbA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjAwO2g9NDAw/https://media.zenfs.com/en/stormmediagroup.com/6cd17fc536064640ca9a6e2f1ff7c9b6
   position: relative;
   overflow: hidden;
   font-weight: bold;
@@ -287,7 +286,7 @@ section {
   }
 
   @media (max-width: 768px) {
-    height: 100%;
+    height: auto;
   }
 }
 
@@ -320,15 +319,21 @@ footer {
 }
 
 span {
-  color: $colorMain;
-  font-size: 24px;
 
   &.han {
     color: $colorKMT;
+    font-size: 24px;
+
   }
 
   &.tsai {
     color: $colorDPP;
+    font-size: 24px;
+  }
+
+  &.highlight {
+    color: $colorMain;
+    font-size: 24px;
   }
 
   &.underline {
