@@ -1,18 +1,73 @@
+// Loader Animation -------------------------------------
+document.onreadystatechange = function(){
+	// Scrolling forbidden 
+	document.documentElement.style.overflowY = 'hidden'; 
+
+	// When the loading completed ...
+	if(document.readyState == "complete"){
+		// Hide the loader
+		document.getElementById('loading').style.opacity="0";
+		document.getElementById('loading').style.zIndex="0";
+		// Scrolling allowed
+		document.documentElement.style.overflowY = 'scroll'; 
+	}
+}
+
+// Global Variables ------------------------------------
 let whoScrolled = 'Han';
 
-// jQuery
+// jQuery ----------------------------------------------
 $(document).ready(function() {
-
+  
   let routeHan = $('#routes-han').offset().top;
   let routeTsai = $('#routes-tsai').offset().top;
   let bridgeSection = $('#bridge').offset().top;
-  // let analysisSection = $('#analysis').offset().top;
-
   
   $(window).scroll(function() {
     let windowHeight = $(this).height();
     let scrolledY = $(this).scrollTop();
-    
+    let scrollFadeInSensed = scrolledY + windowHeight / 3;
+
+    // Sense the scroll the activate the fade animation 
+    let sectionLeading = $('#leading').offset().top;
+    if (scrollFadeInSensed > sectionLeading) {
+      $('#leading .fade-left-item').removeClass('fade-in-left');
+      $('#leading .fade-right-item').removeClass('fade-in-right');
+    }
+
+    let sectionBridge = $('#bridge').offset().top;
+    if (scrollFadeInSensed > sectionBridge) {
+      $('#bridge .fade-top-item').removeClass('fade-in-top');
+    }
+
+    $('#features-han .features-content').each(function () {
+      let thisPos = $(this).offset().top;
+      if (scrollFadeInSensed > thisPos) $(this).removeClass('fade-in-right');
+    })
+
+    $('#features-tsai .features-content').each(function () {
+      let thisPos = $(this).offset().top;
+      if (scrollFadeInSensed > thisPos) $(this).removeClass('fade-in-left');
+    })
+
+    $('#election .fade-item').each(function () {
+      let thisPos = $(this).offset().top;
+      if (scrollFadeInSensed > thisPos) $(this).removeClass('opacity-0');
+    })
+
+    $('#temple .fade-item').each(function () {
+      let thisPos = $(this).offset().top;
+      if (scrollFadeInSensed > thisPos) $(this).removeClass('opacity-0');
+    })
+
+    // Click the link to scroll up to the landing 
+    $('.btn-toTop').click(function(e){
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $('#landing').offset().top
+      }, 1500 );
+    })
+
     // Whether the viewport is less than, or equal to, 768 pixels wide
     let isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -31,6 +86,8 @@ $(document).ready(function() {
   })
 })
 
+
+// D3.js -------------------------------------------------
 d3.json('./JavaScript/2018votes.json').then(data => {
   const allSvg = d3.selectAll('svg')
     .attr('width', 350)
@@ -53,32 +110,36 @@ d3.json('./JavaScript/2018votes.json').then(data => {
       .attr('y', 0)
       .attr('width', d => widthLinear(d.KMT))
       .attr('height', 15)
-      .attr('fill', '#00358A');
+      // .attr('fill', '#00358A');
+      .attr('fill', '#7cdeff');
 
     groups.append('text')
       .text(d => `國民黨 ${d.KMT} %`)
       .attr('x', d => widthLinear(d.KMT) + 10)
       .attr('y', 15)
-      .attr('fill', '#00358A')
       .style('font-size', '16px')
+      // .attr('fill', '#00358A');
+      .attr('fill', '#7cdeff');
 
     groups.append('rect')
       .attr('x', 0)
       .attr('y', 30)
       .attr('width', d => widthLinear(d.DPP))
       .attr('height', 15)
-      .attr('fill', '#09A34A');
+      // .attr('fill', '#09A34A');
+      .attr('fill', '#7cff8e');
 
     groups.append('text')
       .text(d => `民進黨 ${d.DPP ? `${d.DPP} %` : `未提名候選人`} `)
       .attr('x', d => widthLinear(d.DPP) + 10)
       .attr('y', 45)
-      .attr('fill', '#09A34A')
       .style('font-size', '16px')
+      // .attr('fill', '#09A34A');
+      .attr('fill', '#7cff8e');
   })
 })
 
-// Mapbox Settings
+// Mapbox Settings ---------------------------------------
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVmZnljaGVuIiwiYSI6ImNrNGMzcjRqNjBrNTEzc28yYjVpa2ZhNXUifQ.Yy8CvIdVqlHkg6IsjQhOJg';
 
 // Han's routes map
@@ -267,7 +328,6 @@ function setActiveChapter(chapterName) {
 
   // document.getElementById(chapterName).setAttribute('class', 'active');
   // document.getElementById(activeChapterName).setAttribute('class', '');
-
   activeChapterName = chapterName;
 }
 

@@ -1,7 +1,8 @@
-// Import
+// Import --------------------------------------------------
 @import 'base';
+@import 'load';
 
-// Global
+// Global --------------------------------------------------
 *,
 *::before,
 *::after {
@@ -10,8 +11,11 @@
   margin: 0;
 }
 
+// Custom SCSS ----------------------------------------------
+$colorMain: gold;
+$colorKMT: #7cdeff;
+$colorDPP: #7cff8e;
 
-// Custom SCSS
 @keyframes scrollReminder {
   0% {
     opacity: 0;
@@ -52,14 +56,18 @@ section {
 
   .landing-title {
     font-size: 54px;
+    // color: #fff;
     color: #fff;
     text-shadow: 2px 3px 0px #000;
   }
 
   .landing-subtitle {
-    font-size: 24px;
-    color: #000;
-    text-shadow: 2px 2px 0px #fff;
+    font-size: 20px;
+    // color: #000;
+    // color: rgb(22, 255, 236);
+    // text-shadow: 1px 1px 0px #eee;
+    color: #fff;
+    text-shadow: 1px 2px 0px #000;
   }
 
   .landing-lead {
@@ -74,25 +82,27 @@ section {
   .scroll-reminder {
     font-size: 28px;
     color: gold;
-    animation: scrollReminder 1.5s -.5s infinite ease-in;
-  }
-
-  .landing-pic {
-    @include size(100%, 100vh);
-
-    @media (max-width: 768px) {
-      @include size(100%, 50vh);
-    }
+    animation: scrollReminder 1s -.5s infinite ease-in;
   }
 
   .han-pic {
     // background-image: url('https://i.imgur.com/xx1WX7i.png');  
-    background-image: url('../Assets/han.png'); 
+    background-image: url('../Assets/han.png');
+    transition: all .3s; 
+
+    &:hover {
+      background-image: url('../Assets/han-hover.png');
+    }
   }
 
   .tsai-pic {
     // background-image: url('https://i.imgur.com/TTbG1Wd.png');  
     background-image: url('../Assets/tsai.png');  
+    transition: all .3s; 
+
+    &:hover {
+      background-image: url('../Assets/tsai-hover.png');
+    }
   }
 }
 
@@ -101,26 +111,102 @@ section {
   background-image: url('../Assets/leading.jpg');
   // https://s.yimg.com/ny/api/res/1.2/5vEInSnodno.Rq43GhLVbA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjAwO2g9NDAw/https://media.zenfs.com/en/stormmediagroup.com/6cd17fc536064640ca9a6e2f1ff7c9b6
   position: relative;
+  overflow: hidden;
   font-weight: bold;
-  line-height: 1.75;
+  line-height: 2;
   color: #fff;
-  // color: #6DD0CD;  
-
-  .leading-main {
-    @include pos-a(5%, 9%);
-  }
-  
-  .leading-intro {
-    @include pos-a(55%, 80%);
-  }
+  // color: #6DD0CD;
 
   p {
     margin-bottom: 0;
   }
 
-  span {
-    font-size: 28px;
-    color: gold;
+  @media (max-width: 768px) {
+    height: auto;
+  }
+}
+
+.routes {
+  height: auto;
+  position: relative;
+  background-color: #000;
+  padding: 35px;
+
+  .features-content{
+    @include size(100%);
+    position: absolute;
+    padding: 25px 50px;
+    background-color: rgba(#000, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  i {
+    font-size: 18px ;
+    color: red;
+    margin: 0 3px 0 5px;
+  }
+  
+  ul {
+    list-style-position: inside;
+  }
+
+  section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  hr {
+    border-top: 1px solid #ccc;
+  }
+
+  p {
+    margin: 0;
+    line-height: 2;
+    font-size: 16px ;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0;
+    background-color: transparent;
+
+    section {
+      height: auto;
+      padding: 25px 0;      
+    }
+
+    .features-content{
+      position: static;
+    }
+  }
+}
+
+#map-han {
+  @include size(100%, 100vh);
+  position: sticky;
+  top: 0;
+  
+  &.fixedBackground {
+    @include size(100%, 100vh);
+    position: fixed;
+    top: 0;
+    z-index: -2;
+    transition: all .5s;
+  }
+}
+
+#map-tsai {
+  @include size(100%, 100vh);
+  position: sticky;
+  top: 0;
+
+  &.fixedBackground {
+    @include size(100%, 100vh);
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    transition: all .5s;
   }
 }
 
@@ -131,109 +217,157 @@ section {
   line-height: 1.75;
 
   .bridge-main {
-    @include pos-a(5%, 9%);
-    // z-index: 1;
+    @include pos-a(4%, 12%);
   }
 }
 
-#analysis {
-  background-color: tomato;
-}
-
-.routes {
-  height: auto;
+#election, #temple {
   position: relative;
-  padding: 35px;
-  
+  height: 200vh;
+  font-weight: bold;
 
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-    
-  #map-han {
-    @include size(100%, 100vh);
-    position: sticky;
-    top: 0;
-    
-    &.fixedBackground {
-      @include size(100%, 100vh);
-      position: fixed;
-      top: 0;
-      z-index: -2;
-      transition: all .5s;
-    }
+  .container-fluid{
+    @include pos-a(0, 0);
   }
 
-  #map-tsai {
-    @include size(100%, 100vh);
-    position: sticky;
-    top: 0;
-
-    &.fixedBackground {
-      @include size(100%, 100vh);
-      position: fixed;
-      top: 0;
-      z-index: -1;
-      transition: all .5s;
-    }
-  }
-
-  i {
-    font-size: 18px ;
-    color: red;
-    margin: 0 3px 0 5px;
-  }
-
-  ul {
-    list-style-position: inside;
+  span {
+    font-size: 54px;
   }
 }
 
-.routes section {
-  padding: 25px 50px;
+#election .bg {
+  background-image: url('../Assets/election.png');
+  position: sticky;
+  top: 0;
+}
 
-  // .content {
-    // padding: 15px;
-    // background-color: rgba(#000, 0.5);
-    // border: 1px solid #00358A;
-    
-  // }
+#temple .bg {
+  background-image: url('../Assets/temple.png');
+  position: sticky;
+  top: 0;  
+}
 
-  line-height: 25px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.bg-map {
+  background-size: cover;
+  background-position: right 70%;
+  // background-attachment: fixed;
+  background-repeat: no-repeat;
+  
+  @media (max-width: 768px) {
+    background-position: center center;
+  }
+}
+
+.bg-pic {
+  @include size(100%, 100vh);
 
   @media (max-width: 768px) {
-    height: auto;
-    padding: 25px 0;
-    
-    div {
-      padding: 25px 20px;
-      background-color: rgba(#000, 0.5);
-      color: #fff;
-    }
+    @include size(100%, 50vh);
+  }
+}
 
-    article p {
-      margin: 0;
-      line-height: 2;
-    }
+#conclusion {
+  position: relative;
+
+  .bg-mask {
+    @include size(100%);
+    @include pos-a(0, 0);
+    z-index: 10;
+    background-color: rgba(#000, 0.8);
+  }
+
+  .kmt-pic {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Naval_Jack_of_the_Republic_of_China.svg/1024px-Naval_Jack_of_the_Republic_of_China.svg.png?fbclid=IwAR3ZjPcFqeoiqKQq7119rf8senng7JNtJw-ftl3rX7lIjEnZpWuTdFMoGd8');
+    filter: grayscale(0.7);
+  }
+
+  .dpp-pic {
+    background-image: url('../Assets/DPPicon.png');
+    filter: grayscale(0.7);
+  }
+
+  @media (max-width: 768px) {
+    height: 100%;
   }
 }
 
 footer {
-  font-size: 16px;
-  padding: 30px  20px;
+  font-size: 12px;
+  padding: 20px 20px;
+  color: #ccc;
 
   li {
     list-style: none ;
+    margin-bottom: 5px;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: #ccc;
+    text-decoration: underline;
+
+    &:hover {
+      color: gold;
+    }
+  }
+
+  img {
+    height: 85px;
+  }
+}
+
+span {
+  color: $colorMain;
+  font-size: 24px;
+
+  &.han {
+    color: $colorKMT;
+  }
+
+  &.tsai {
+    color: $colorDPP;
+  }
+
+  &.underline {
+    color: inherit;
+    font-size: initial;
+    text-decoration: underline;
+  }
+}
+
+$route-han-img: (
+  "han-route-1": 'https://s.newtalk.tw/album/news/282/5d457e46907d8.jpg',
+  "han-route-2": 'https://obs.line-scdn.net/0hygaRvcWjJkhcKw2FqjxZH2Z9JSdvRzVLOB13Sx9FeHwkSzFJM0hoJn8vLXF2TmEWNUxsLHkpPXkhT2cdY09o/w644',
+  "han-route-3": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191111/1245x768_20191111000238.jpg',
+  "han-route-4": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191118/1176x768_20191118000128.jpg',
+  "han-route-5": 'https://s.yimg.com/ny/api/res/1.2/ac0qVdWfSkCUryhXQatAAA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjMwO2g9MzUz/https://media.zenfs.com/en/cna.com.tw/721b56ae2c7fb778e798239c993f1cd0',
+  "han-route-6": 'https://s.newtalk.tw/album/news/331/5dd931f7d6402.jpg',
+  "han-route-7": 'https://images.chinatimes.com/newsphoto/2019-11-30/900/20191130002157.jpg',
+  "han-route-8": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191201/1152x768_865943413793.jpg',
+  "han-route-9": 'https://img.ltn.com.tw/Upload/news/600/2019/12/14/3009201_1_1.jpg',
+  "han-route-10": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191223/1152x768_246443818309.jpg',
+  "tsai-route-1": 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/11/15/realtime/7072379.png&x=0&y=0&sw=0&sh=0&sl=W&fw=1050',
+  "tsai-route-2": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191122/1262x768_20191122000227.jpg',
+  "tsai-route-3": 'http://www.ntdtv.com.tw/public/uploads/assets/2019/11/24/2019-11-24-5dda6d740970f-780x520-32.jpg',
+  "tsai-route-4": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191130/1161x768_20191130000123.jpg',
+  "tsai-route-5": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191207/1365x768_20191207000067.jpg',
+  "tsai-route-6": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191208/1160x768_20191208000064.jpg',
+  "tsai-route-7": 'https://cc.tvbs.com.tw/img/upload/2019/12/13/20191213231742-1825b95a.jpg',
+  "tsai-route-8": 'https://s.yimg.com/ny/api/res/1.2/cWFgAoYjScHcJPIpvlYMOA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9MTI4MDtoPTk2MA--/https://media.zenfs.com/zh-tw/nownews.com/8ccffc34136aeeb7a6e1365de6471b52',
+  "tsai-route-9": 'https://www.upmedia.mg/upload/content/20191221/nX191221225458640280.jpg',
+  "tsai-route-10": 'https://img5.cna.com.tw/www/WebPhotos/1024/20191223/1024x768_072343016050.jpg'
+);
+
+@each $name, $imgLink in $route-han-img {
+    ##{$name} .bg {
+    @include size(100%);
+    position: absolute;
+    background-image: url($imgLink);
+    filter: grayscale(0.7) blur(5px);
   }
 }
 
 
-#han-route-1 {
-  // background-image: url('https://media.zenfs.com/zh-tw/nownews.com/2041b7493923480ecde5e02a8a69a3d5');
-  background-size: cover;
-  background-position: center;
-  // position: relative;
-}

@@ -79,3 +79,43 @@
   left: 0px; right: 0px;
   top: 0px; bottom: 0px;
 }
+
+// Fade Animation 
+.fade-left-item, 
+.fade-right-item,
+.fade-top-item,
+.fade-bottom-item,
+.fade-item {
+  transform: translateX(0px);
+  opacity: 1;
+  transition: all 1s;
+}
+
+.fade-item-delay {
+  opacity: 1;
+  transition: all 1s 2s;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.fade-in-left {
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.fade-in-right {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.fade-in-top {
+  transform: translateY(-100px);
+  opacity: 0;
+}
+
+.fade-in-bottom {
+  transform: translateY(100px);
+  opacity: 0;
+}
