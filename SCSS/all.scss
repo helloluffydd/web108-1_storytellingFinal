@@ -56,16 +56,12 @@ section {
 
   .landing-title {
     font-size: 54px;
-    // color: #fff;
     color: #fff;
     text-shadow: 2px 3px 0px #000;
   }
 
   .landing-subtitle {
     font-size: 20px;
-    // color: #000;
-    // color: rgb(22, 255, 236);
-    // text-shadow: 1px 1px 0px #eee;
     color: #fff;
     text-shadow: 1px 2px 0px #000;
   }
@@ -80,15 +76,19 @@ section {
   }
 
   .scroll-reminder {
-    font-size: 28px;
+    font-size: 32px;
     color: gold;
     animation: scrollReminder 1s -.5s infinite ease-in;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .han-pic {
-    // background-image: url('https://i.imgur.com/xx1WX7i.png');  
     background-image: url('../Assets/han.png');
-    transition: all .3s; 
+    transition: all .3s;
+    position: relative;
 
     &:hover {
       background-image: url('../Assets/han-hover.png');
@@ -96,7 +96,6 @@ section {
   }
 
   .tsai-pic {
-    // background-image: url('https://i.imgur.com/TTbG1Wd.png');  
     background-image: url('../Assets/tsai.png');  
     transition: all .3s; 
 
@@ -107,7 +106,6 @@ section {
 }
 
 #leading {
-  // background-image: url('https://s.yimg.com/ny/api/res/1.2/5vEInSnodno.Rq43GhLVbA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjAwO2g9NDAw/https://media.zenfs.com/en/stormmediagroup.com/6cd17fc536064640ca9a6e2f1ff7c9b6');
   background-image: url('../Assets/leading.jpg');
   position: relative;
   overflow: hidden;
@@ -323,17 +321,18 @@ span {
   &.han {
     color: $colorKMT;
     font-size: 24px;
-
+    font-weight: bold;
   }
 
   &.tsai {
     color: $colorDPP;
     font-size: 24px;
+    font-weight: bold;
   }
 
   &.highlight {
     color: $colorMain;
-    font-size: 24px;
+    // font-size: 24px;
   }
 
   &.underline {

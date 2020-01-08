@@ -323,16 +323,21 @@ section {
 }
 
 #landing .scroll-reminder {
-  font-size: 28px;
+  font-size: 32px;
   color: gold;
   -webkit-animation: scrollReminder 1s -.5s infinite ease-in;
           animation: scrollReminder 1s -.5s infinite ease-in;
+}
+
+#landing .scroll-reminder:hover {
+  cursor: pointer;
 }
 
 #landing .han-pic {
   background-image: url("../Assets/han.png");
   -webkit-transition: all .3s;
   transition: all .3s;
+  position: relative;
 }
 
 #landing .han-pic:hover {
@@ -598,16 +603,17 @@ footer img {
 span.han {
   color: #7cdeff;
   font-size: 24px;
+  font-weight: bold;
 }
 
 span.tsai {
   color: #7cff8e;
   font-size: 24px;
+  font-weight: bold;
 }
 
 span.highlight {
   color: gold;
-  font-size: 24px;
 }
 
 span.underline {

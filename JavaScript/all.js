@@ -18,12 +18,27 @@ let whoScrolled = 'Han';
 
 // jQuery ----------------------------------------------
 $(document).ready(function() {
-  
   let routeHan = $('#routes-han').offset().top;
   let routeTsai = $('#routes-tsai').offset().top;
   let bridgeSection = $('#bridge').offset().top;
-  
-  $(window).scroll(function() {
+
+  // Click the scroll-reminder to scroll to the next section
+  $('.scroll-reminder').on('click', function (e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: $(window).height()
+    }, 800);
+  });
+
+  // Click the link to scroll up to the landing 
+  $('.btn-toTop').click(function(e){
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: $('#landing').offset().top
+    }, 1500 );
+  })
+
+  $(window).scroll(function(e) {
     let windowHeight = $(this).height();
     let scrolledY = $(this).scrollTop();
     let scrollFadeInSensed = scrolledY + windowHeight / 3;
@@ -39,11 +54,12 @@ $(document).ready(function() {
     if (scrollFadeInSensed > sectionBridge) {
       $('#bridge .fade-top-item').removeClass('fade-in-top');
     }
-
+ 
     $('#features-han .features-content').each(function () {
       let thisPos = $(this).offset().top;
       if (scrollFadeInSensed > thisPos) $(this).removeClass('fade-in-right');
     })
+
 
     $('#features-tsai .features-content').each(function () {
       let thisPos = $(this).offset().top;
@@ -58,14 +74,6 @@ $(document).ready(function() {
     $('#temple .fade-item').each(function () {
       let thisPos = $(this).offset().top;
       if (scrollFadeInSensed > thisPos) $(this).removeClass('opacity-0');
-    })
-
-    // Click the link to scroll up to the landing 
-    $('.btn-toTop').click(function(e){
-      e.preventDefault();
-      $('html, body').animate({
-        scrollTop: $('#landing').offset().top
-      }, 1500 );
     })
 
     // Whether the viewport is less than, or equal to, 768 pixels wide
@@ -92,6 +100,10 @@ d3.json('./JavaScript/2018votes.json').then(data => {
   const allSvg = d3.selectAll('svg')
     .attr('width', 350)
     .attr('height', 50);
+    
+  const widthLinear = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, 200]);
 
   allSvg.each(function() {
     const svgDataCity = d3.select(this).attr('data-city');    
@@ -101,16 +113,11 @@ d3.json('./JavaScript/2018votes.json').then(data => {
       .enter()
       .append('g');
 
-    const widthLinear = d3.scaleLinear()
-      .domain([0, 100])
-      .range([0, 300]);
-
     groups.append('rect')
       .attr('x', 0)
       .attr('y', 0)
       .attr('width', d => widthLinear(d.KMT))
       .attr('height', 15)
-      // .attr('fill', '#00358A');
       .attr('fill', '#7cdeff');
 
     groups.append('text')
@@ -118,7 +125,6 @@ d3.json('./JavaScript/2018votes.json').then(data => {
       .attr('x', d => widthLinear(d.KMT) + 10)
       .attr('y', 15)
       .style('font-size', '16px')
-      // .attr('fill', '#00358A');
       .attr('fill', '#7cdeff');
 
     groups.append('rect')
@@ -126,7 +132,6 @@ d3.json('./JavaScript/2018votes.json').then(data => {
       .attr('y', 30)
       .attr('width', d => widthLinear(d.DPP))
       .attr('height', 15)
-      // .attr('fill', '#09A34A');
       .attr('fill', '#7cff8e');
 
     groups.append('text')
@@ -134,7 +139,6 @@ d3.json('./JavaScript/2018votes.json').then(data => {
       .attr('x', d => widthLinear(d.DPP) + 10)
       .attr('y', 45)
       .style('font-size', '16px')
-      // .attr('fill', '#09A34A');
       .attr('fill', '#7cff8e');
   })
 })
